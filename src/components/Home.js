@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import Programs from '../components/program'
-
+import Details from './program';
+import Readmore from './Readmore';
 class homePage extends Component {
    constructor(props){
        super(props);
@@ -8,19 +8,6 @@ class homePage extends Component {
            items : []
        }
    }
-
-    // displayPrograms = async (e) => {
-    //     e.preventDefault();
-
-    //     const reqURL=`http://api.tvmaze.com/shows `;
-    //     const api_call = await fetch(reqURL);
-    //     const data = await api_call.json();
-    //     console.log(data);
-    //     this.setState({
-    //         name : data.name,
-            
-    //     });
-    //     console.log(this.name);
 
     componentDidMount(){
         fetch('http://api.tvmaze.com/shows')
@@ -33,27 +20,32 @@ class homePage extends Component {
             })
         });
     }
-    // }
-    
+     
     render() {
         var { items} = this.state;
         return (
             <div>
-                <h1>
+                <h1 className = "title"> 
                     Tv Maze progrms
                 </h1>
-                <button onClick = {this.displayPrograms}>Look All the Programs</button>
-                {/* <Programs
-                    name = {this.state.name}
-
-                /> */}
                 <ul>
                     {items.map(item =>(
-                        <p key = {item.id}>
-                        {item.name} | {item.rating.average} | {item.summary} | {item.image.medium}|{item.image.original}
-                        <button>Read more</button>
-                        </p>
-                    ))};
+                            <div className = "container information" key = {item.id}>
+                                <div className = "row">
+                                        <div className="col-sm-3">
+                                            <img className="img-thumbnail" src={item.image.medium}/>
+                                        </div>
+                                        <div className="col-sm-9">
+                                            <p>Name: {item.name}</p> 
+                                            <p>Average Rating: {item.rating.average} </p>
+                                            <p>Summary :{item.summary} </p>
+                                            {/* <button  onClick = {this.readMore} className="btn btn-primary readMoreButton">Read more ...</button> */}
+                                            <Readmore item = {item}/>
+                                        </div>
+
+                                </div>
+                            </div>
+                        ))};
                 </ul>
             </div>
         );

@@ -1,5 +1,21 @@
-.App {
+
+  body {
+    background-image: url("background image.jpg");
+    background-attachment: fixed;
+    opacity: 0.8;
+
+
+}
+.title {
   text-align: center;
+}
+.information{
+  border: 1px solid royalblue;
+  margin-top: 20px;
+  background: #f1ecec;
+}
+.readMoreButton{
+  margin-bottom: 20px;
 }
 
 .App-logo {
