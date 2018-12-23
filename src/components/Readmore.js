@@ -7,16 +7,16 @@ class Readmore extends Component {
        show : false,
        text : "Read more ..."
    };
-   readMore = ()=>{
+   readMore = (e)=>{
        const {show} = this.state;
        this.setState({show :!show})  
    }
 
     render() {
         return (
-            <div>
+            <div className = "readmore_button_div">
                     {this.state.show && <Detailpage  detail = {this.props.item}/>}
-                    <button  onClick = {this.readMore} className="btn btn-primary readMoreButton">Read More ...</button> 
+                    <button  onClick = {this.readMore} value = "read more"className="btn btn-primary readMoreButton">Read More ...</button> 
             </div>
         );
     }

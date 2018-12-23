@@ -4,8 +4,12 @@ class Detailpage extends Component {
     render() {
         return (
             <div>
-                I am in detail page
-                {this.props.detail.name}
+                <span>Language: </span>{this.props.detail.language}<br></br>
+                <span>Status: </span>{this.props.detail.status}<br></br>
+                <span>country of origin: </span> {this.props.detail.network.country.name}<br></br>
+                <span>premiered on: </span>{this.props.detail.premiered}<br></br>
+                <span>Official site: </span>{this.props.detail.officialSite}<br></br>
+                <span></span>
             </div>
         );
     }

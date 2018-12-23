@@ -3,24 +3,52 @@
     background-image: url("background image.jpg");
     background-attachment: fixed;
     opacity: 0.8;
-
-
+    padding-top: 10px;
 }
-.title {
-  text-align: center;
+.navbar{
+  background-color: black;
+}
+.image-size{
+  padding-top : 5px;
+  padding-bottom: 5px;
+}
+.search{
+  border-radius: 2rem ;
+  width: 100%;
+  margin-top: 11px;
+  padding: 3px;
+    border: 2px solid #1ed8bd;
+}
+
+.search-body{
+  margin-left: 20px;
+}
+.main_body{
+  margin-top: 85px;
 }
 .information{
   border: 1px solid royalblue;
   margin-top: 20px;
   background: #f1ecec;
 }
+.main_info{
+  padding-top: 15px;
+}
 .readMoreButton{
   margin-bottom: 20px;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.readmore_button_div{
+  margin-top: 10px;
+}
+span {
+ color: #19a291;
+ font-weight : bold;
+}
+.container .row .col-sm-3 {
+  padding-left: 0px;
+}
+.col-sm-9 p{
+  margin-bottom: 0px;
 }
 
 .App-header {
