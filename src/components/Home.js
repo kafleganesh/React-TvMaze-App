@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Details from './program';
 import Readmore from './Readmore';
-import Search from './Search';
 import logo from '../tvm-header-logo.png';
 import StarRatingComponent from 'react-star-rating-component';
 class homePage extends Component {
    constructor(props){
        super(props);
        this.state = {
-           items : []
+           items : [],
+           search: ''
        }
    }
 
@@ -23,9 +22,16 @@ class homePage extends Component {
             })
         });
     }
+
+    updateSearch(event){
+        this.setState({search : event.target.value});
+    }
      
     render() {
         var { items} = this.state;
+        let filteredSeries = items.filter((item) =>{
+            return item.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+        });
         return (
             <div>
                     <nav class="navbar fixed-top">
@@ -35,7 +41,10 @@ class homePage extends Component {
                                 <img class="img-fluid image-size"  src= {logo} alt="Tvmaze_logo"/>
                             </div>
                             <div className = "col-sm-8">
-                                <Search/>
+                                {/* <Search /> */}
+                                <div className = "search-body">
+                                <input type = "text" className = "search" placeholder = "Search Shows and People" value = {this.state.search}  onChange = {this.updateSearch.bind(this)}/>
+                                </div>
                             </div>
                         </div>
                         </div>
@@ -44,11 +53,11 @@ class homePage extends Component {
                     </nav> 
                     <div className = "main_body">         
                             <ul>
-                                {items.map(item =>(
+                                {filteredSeries.map(item =>(
                                         <div className = "container information" key = {item.id}>
                                             <div className = "row">
                                                     <div className="col-sm-3 ">
-                                                        <img className="img-thumbnail" src={item.image.medium}/>
+                                                        <img className="img-thumbnail" alt = " " src={item.image.medium}/>
                                                     </div>
                                                     <div className="col-sm-9">
                                                         <div className = "main_info">
@@ -61,12 +70,8 @@ class homePage extends Component {
                                                                     value={item.rating.average}
                                                                     /><br></br>
                                                             <span>Summary: </span>{item.summary}<br></br>
-                                                            {/* <button  onClick = {this.readMore} className="btn btn-primary readMoreButton">Read more ...</button> */}
                                                             <Readmore item = {item}/>
-
                                                         </div>
-
-
                                                     </div>
                                             </div>
                                         </div>
